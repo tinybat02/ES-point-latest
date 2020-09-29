@@ -44,7 +44,7 @@ export const processDataES = (data: SingleData[]) => {
     pointFeature.setStyle(
       new Style({
         image: new Circle({
-          radius: latestUncertainty[hash],
+          radius: latestUncertainty[hash] * 3,
           fill: new Fill({ color: 'rgba(255, 255, 255, 0.5)' }),
           stroke: new Stroke({
             color: '#49A8DE',

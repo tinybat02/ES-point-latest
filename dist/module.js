@@ -53112,7 +53112,7 @@ var processDataES = function processDataES(data) {
     var pointFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_0__["default"](new ol_geom_Point__WEBPACK_IMPORTED_MODULE_1__["default"](latestCoord[hash]).transform('EPSG:4326', 'EPSG:3857'));
     pointFeature.setStyle(new ol_style__WEBPACK_IMPORTED_MODULE_4__["Style"]({
       image: new ol_style__WEBPACK_IMPORTED_MODULE_4__["Circle"]({
-        radius: latestUncertainty[hash],
+        radius: latestUncertainty[hash] * 3,
         fill: new ol_style__WEBPACK_IMPORTED_MODULE_4__["Fill"]({
           color: 'rgba(255, 255, 255, 0.5)'
         }),
