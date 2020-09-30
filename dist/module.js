@@ -53110,9 +53110,19 @@ var processDataES = function processDataES(data) {
   });
   var dataPoints = Object.keys(latestCoord).map(function (hash) {
     var pointFeature = new ol_Feature__WEBPACK_IMPORTED_MODULE_0__["default"](new ol_geom_Point__WEBPACK_IMPORTED_MODULE_1__["default"](latestCoord[hash]).transform('EPSG:4326', 'EPSG:3857'));
+    var radius = 0;
+
+    if (latestUncertainty[hash] <= 10) {
+      radius = 20;
+    } else if (latestUncertainty[hash] > 10 && latestUncertainty[hash] <= 30) {
+      radius = 40;
+    } else {
+      radius = 80;
+    }
+
     pointFeature.setStyle(new ol_style__WEBPACK_IMPORTED_MODULE_4__["Style"]({
       image: new ol_style__WEBPACK_IMPORTED_MODULE_4__["Circle"]({
-        radius: latestUncertainty[hash] * 3,
+        radius: radius,
         fill: new ol_style__WEBPACK_IMPORTED_MODULE_4__["Fill"]({
           color: 'rgba(255, 255, 255, 0.5)'
         }),

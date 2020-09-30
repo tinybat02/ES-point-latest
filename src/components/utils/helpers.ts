@@ -41,10 +41,18 @@ export const processDataES = (data: SingleData[]) => {
 
   const dataPoints = Object.keys(latestCoord).map(hash => {
     const pointFeature = new Feature(new Point(latestCoord[hash]).transform('EPSG:4326', 'EPSG:3857'));
+    let radius = 0;
+    if (latestUncertainty[hash] <= 10) {
+      radius = 20;
+    } else if (latestUncertainty[hash] > 10 && latestUncertainty[hash] <= 30) {
+      radius = 40;
+    } else {
+      radius = 80;
+    }
     pointFeature.setStyle(
       new Style({
         image: new Circle({
-          radius: latestUncertainty[hash] * 3,
+          radius: radius,
           fill: new Fill({ color: 'rgba(255, 255, 255, 0.5)' }),
           stroke: new Stroke({
             color: '#49A8DE',
