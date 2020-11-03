@@ -40,11 +40,13 @@ export const processDataES = (data: SingleData[]) => {
   const latestCoord: { [key: string]: [number, number] } = {};
   const latestUncertainty: { [key: string]: number } = {};
   const latestVendor: { [key: string]: string } = {};
+  const latestVendorname: { [key: string]: string } = {};
   data.map(item => {
     if (!latestCoord[item.hash_id]) {
       latestCoord[item.hash_id] = [item.longitude, item.latitude];
       latestUncertainty[item.hash_id] = item.uncertainty;
       latestVendor[item.hash_id] = item.vendor;
+      latestVendorname[item.hash_id] = item.vendorname;
     }
   });
 
@@ -75,7 +77,7 @@ export const processDataES = (data: SingleData[]) => {
           }),
           font: '18px',
           //@ts-ignore
-          text: matchVendorUser[latestVendor[hash]] || latestVendor[hash],
+          text: matchVendorUser[latestVendor[hash]] || latestVendorname[hash],
           offsetY: -10,
         }),
       })

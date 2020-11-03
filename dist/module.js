@@ -53109,11 +53109,13 @@ var processDataES = function processDataES(data) {
   var latestCoord = {};
   var latestUncertainty = {};
   var latestVendor = {};
+  var latestVendorname = {};
   data.map(function (item) {
     if (!latestCoord[item.hash_id]) {
       latestCoord[item.hash_id] = [item.longitude, item.latitude];
       latestUncertainty[item.hash_id] = item.uncertainty;
       latestVendor[item.hash_id] = item.vendor;
+      latestVendorname[item.hash_id] = item.vendorname;
     }
   });
   var dataPoints = Object.keys(latestCoord).map(function (hash) {
@@ -53146,7 +53148,7 @@ var processDataES = function processDataES(data) {
         }),
         font: '18px',
         //@ts-ignore
-        text: matchVendorUser[latestVendor[hash]] || latestVendor[hash],
+        text: matchVendorUser[latestVendor[hash]] || latestVendorname[hash],
         offsetY: -10
       })
     }));
