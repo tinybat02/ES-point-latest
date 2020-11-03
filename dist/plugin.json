@@ -11,7 +11,7 @@
     "keywords": ["openlayers", "map", "elasticsearch"],
     "screenshots": [],
     "version": "0.0.1",
-    "updated": "2020-09-30"
+    "updated": "2020-11-03"
   },
 
   "dependencies": {

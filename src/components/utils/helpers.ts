@@ -4,6 +4,15 @@ import VectorSource from 'ol/source/Vector';
 import { Vector as VectorLayer } from 'ol/layer';
 import { Circle, Style, Fill, Text, Stroke } from 'ol/style';
 
+const matchVendorUser = {
+  '42:ae:29': 'Wasiq',
+  '0e:86:70': 'Adeeb',
+  '26:29:89': 'Nikos',
+  'f8:f1:e6': 'Nam',
+  'ba:29:16': 'George',
+  '9a:f9:46': 'Mustafa',
+};
+
 interface SingleData {
   // coordinate: [number, number];
   latitude: number;
@@ -65,7 +74,8 @@ export const processDataES = (data: SingleData[]) => {
             width: 1,
           }),
           font: '18px',
-          text: latestVendor[hash],
+          //@ts-ignore
+          text: matchVendorUser[latestVendor[hash]] || latestVendor[hash],
           offsetY: -10,
         }),
       })

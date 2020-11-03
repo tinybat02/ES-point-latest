@@ -53084,6 +53084,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var matchVendorUser = {
+  '42:ae:29': 'Wasiq',
+  '0e:86:70': 'Adeeb',
+  '26:29:89': 'Nikos',
+  'f8:f1:e6': 'Nam',
+  'ba:29:16': 'George',
+  '9a:f9:46': 'Mustafa'
+};
 var processDataES = function processDataES(data) {
   // latest record per each mac_address
   // const latestRecords = data.reduce((rv: { [key: string]: [number, number] }, item) => {
@@ -53137,7 +53145,8 @@ var processDataES = function processDataES(data) {
           width: 1
         }),
         font: '18px',
-        text: latestVendor[hash],
+        //@ts-ignore
+        text: matchVendorUser[latestVendor[hash]] || latestVendor[hash],
         offsetY: -10
       })
     }));
