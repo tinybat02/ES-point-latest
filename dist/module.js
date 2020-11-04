@@ -52871,7 +52871,6 @@ function (_super) {
   }
 
   MainPanel.prototype.componentDidMount = function () {
-    console.log('tink tink ', this.props.data);
     var _a = this.props.options,
         tile_url = _a.tile_url,
         zoom_level = _a.zoom_level,

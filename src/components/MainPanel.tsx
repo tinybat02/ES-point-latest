@@ -25,7 +25,6 @@ export class MainPanel extends PureComponent<Props> {
   pointLayer: VectorLayer;
 
   componentDidMount() {
-    console.log('tink tink ', this.props.data);
     const { tile_url, zoom_level, center_lon, center_lat } = this.props.options;
 
     const carto = new TileLayer({
