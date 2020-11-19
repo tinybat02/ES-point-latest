@@ -78465,19 +78465,7 @@ function (_super) {
       var buffer = this.props.data.series[0].fields[0].values.buffer;
       this.pointLayer = Object(_utils_helpers__WEBPACK_IMPORTED_MODULE_9__["processDataES"])(buffer);
       this.map.addLayer(this.pointLayer);
-    } // this.map.addInteraction(
-    //   new DragPan({
-    //     condition: function(event) {
-    //       return platformModifierKeyOnly(event) || this.getPointerCount() === 2;
-    //     },
-    //   })
-    // );
-    // this.map.addInteraction(
-    //   new MouseWheelZoom({
-    //     condition: platformModifierKeyOnly,
-    //   })
-    // );
-
+    }
   };
 
   MainPanel.prototype.componentDidUpdate = function (prevProps) {

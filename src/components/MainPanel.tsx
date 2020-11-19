@@ -66,19 +66,6 @@ export class MainPanel extends PureComponent<Props> {
       this.pointLayer = processDataES(buffer);
       this.map.addLayer(this.pointLayer);
     }
-
-    // this.map.addInteraction(
-    //   new DragPan({
-    //     condition: function(event) {
-    //       return platformModifierKeyOnly(event) || this.getPointerCount() === 2;
-    //     },
-    //   })
-    // );
-    // this.map.addInteraction(
-    //   new MouseWheelZoom({
-    //     condition: platformModifierKeyOnly,
-    //   })
-    // );
   }
 
   componentDidUpdate(prevProps: Props) {
