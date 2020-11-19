@@ -6,7 +6,7 @@ import { Map, View } from 'ol';
 import XYZ from 'ol/source/XYZ';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import { fromLonLat } from 'ol/proj';
-import { defaults, DragPan, MouseWheelZoom } from 'ol/interaction';
+import { /* defaults, */ DragPan, MouseWheelZoom } from 'ol/interaction';
 import { platformModifierKeyOnly } from 'ol/events/condition';
 import nanoid from 'nanoid';
 import { processDataES } from './utils/helpers';
@@ -33,7 +33,7 @@ export class MainPanel extends PureComponent<Props> {
       }),
     });
     this.map = new Map({
-      interactions: defaults({ dragPan: false, mouseWheelZoom: false }),
+      // interactions: defaults({ dragPan: false, mouseWheelZoom: false }),
       // interactions: defaults({ dragPan: false, mouseWheelZoom: false }).extend([
       //   new DragPan({
       //     condition: function(event) {
