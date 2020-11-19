@@ -52885,13 +52885,17 @@ function (_super) {
       interactions: Object(ol_interaction__WEBPACK_IMPORTED_MODULE_6__["defaults"])({
         dragPan: false,
         mouseWheelZoom: false
-      }).extend([new ol_interaction__WEBPACK_IMPORTED_MODULE_6__["DragPan"]({
-        condition: function condition(event) {
-          return Object(ol_events_condition__WEBPACK_IMPORTED_MODULE_7__["platformModifierKeyOnly"])(event) || this.getPointerCount() === 2;
-        }
-      }), new ol_interaction__WEBPACK_IMPORTED_MODULE_6__["MouseWheelZoom"]({
-        condition: ol_events_condition__WEBPACK_IMPORTED_MODULE_7__["platformModifierKeyOnly"]
-      })]),
+      }),
+      // interactions: defaults({ dragPan: false, mouseWheelZoom: false }).extend([
+      //   new DragPan({
+      //     condition: function(event) {
+      //       return platformModifierKeyOnly(event) || this.getPointerCount() === 2;
+      //     },
+      //   }),
+      //   new MouseWheelZoom({
+      //     condition: platformModifierKeyOnly,
+      //   }),
+      // ]),
       layers: [carto],
       view: new ol__WEBPACK_IMPORTED_MODULE_2__["View"]({
         center: Object(ol_proj__WEBPACK_IMPORTED_MODULE_5__["fromLonLat"])([center_lon, center_lat]),
@@ -52915,6 +52919,15 @@ function (_super) {
       this.pointLayer = Object(_utils_helpers__WEBPACK_IMPORTED_MODULE_9__["processDataES"])(buffer);
       this.map.addLayer(this.pointLayer);
     }
+
+    this.map.addInteraction(new ol_interaction__WEBPACK_IMPORTED_MODULE_6__["DragPan"]({
+      condition: function condition(event) {
+        return Object(ol_events_condition__WEBPACK_IMPORTED_MODULE_7__["platformModifierKeyOnly"])(event) || this.getPointerCount() === 2;
+      }
+    }));
+    this.map.addInteraction(new ol_interaction__WEBPACK_IMPORTED_MODULE_6__["MouseWheelZoom"]({
+      condition: ol_events_condition__WEBPACK_IMPORTED_MODULE_7__["platformModifierKeyOnly"]
+    }));
   };
 
   MainPanel.prototype.componentDidUpdate = function (prevProps) {
