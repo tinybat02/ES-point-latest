@@ -33,7 +33,7 @@ export class MainPanel extends PureComponent<Props> {
       }),
     });
     this.map = new Map({
-      interactions: defaults({ dragPan: false, mouseWheelZoom: false, onFocusOnly: true }).extend([
+      interactions: defaults({ dragPan: false, mouseWheelZoom: false }).extend([
         new DragPan({
           condition: function(event) {
             return platformModifierKeyOnly(event) || this.getPointerCount() === 2;

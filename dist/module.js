@@ -52884,8 +52884,7 @@ function (_super) {
     this.map = new ol__WEBPACK_IMPORTED_MODULE_2__["Map"]({
       interactions: Object(ol_interaction__WEBPACK_IMPORTED_MODULE_6__["defaults"])({
         dragPan: false,
-        mouseWheelZoom: false,
-        onFocusOnly: true
+        mouseWheelZoom: false
       }).extend([new ol_interaction__WEBPACK_IMPORTED_MODULE_6__["DragPan"]({
         condition: function condition(event) {
           return Object(ol_events_condition__WEBPACK_IMPORTED_MODULE_7__["platformModifierKeyOnly"])(event) || this.getPointerCount() === 2;
