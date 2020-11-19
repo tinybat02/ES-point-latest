@@ -6,7 +6,7 @@ import { Map, View } from 'ol';
 import XYZ from 'ol/source/XYZ';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import { fromLonLat } from 'ol/proj';
-import { /* defaults, */ DragPan, MouseWheelZoom } from 'ol/interaction';
+import { defaults, DragPan, MouseWheelZoom } from 'ol/interaction';
 import { platformModifierKeyOnly } from 'ol/events/condition';
 import nanoid from 'nanoid';
 import { processDataES } from './utils/helpers';
@@ -33,17 +33,16 @@ export class MainPanel extends PureComponent<Props> {
       }),
     });
     this.map = new Map({
-      // interactions: defaults({ dragPan: false, mouseWheelZoom: false }),
-      // interactions: defaults({ dragPan: false, mouseWheelZoom: false }).extend([
-      //   new DragPan({
-      //     condition: function(event) {
-      //       return platformModifierKeyOnly(event) || this.getPointerCount() === 2;
-      //     },
-      //   }),
-      //   new MouseWheelZoom({
-      //     condition: platformModifierKeyOnly,
-      //   }),
-      // ]),
+      interactions: defaults({ dragPan: false, mouseWheelZoom: false }).extend([
+        new DragPan({
+          condition: function(event) {
+            return this.getPointerCount() === 2 || platformModifierKeyOnly(event);
+          },
+        }),
+        new MouseWheelZoom({
+          condition: platformModifierKeyOnly,
+        }),
+      ]),
       layers: [carto],
       view: new View({
         center: fromLonLat([center_lon, center_lat]),
@@ -68,18 +67,18 @@ export class MainPanel extends PureComponent<Props> {
       this.map.addLayer(this.pointLayer);
     }
 
-    this.map.addInteraction(
-      new DragPan({
-        condition: function(event) {
-          return platformModifierKeyOnly(event) || this.getPointerCount() === 2;
-        },
-      })
-    );
-    this.map.addInteraction(
-      new MouseWheelZoom({
-        condition: platformModifierKeyOnly,
-      })
-    );
+    // this.map.addInteraction(
+    //   new DragPan({
+    //     condition: function(event) {
+    //       return platformModifierKeyOnly(event) || this.getPointerCount() === 2;
+    //     },
+    //   })
+    // );
+    // this.map.addInteraction(
+    //   new MouseWheelZoom({
+    //     condition: platformModifierKeyOnly,
+    //   })
+    // );
   }
 
   componentDidUpdate(prevProps: Props) {
